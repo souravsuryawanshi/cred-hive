@@ -1,0 +1,8 @@
+
+<div class="range-container">
+<h4>Select Loan Range</h4>
+<mat-slider class="selector" min="0" max="500" discrete showTickMarks>
+    <input  [(ngModel)]="startValue" matSliderStartThumb (dragStart)="onValueChange($event)">
+    <input [(ngModel)]="endValue" matSliderEndThumb (dragEnd)="onValueChange($event)">
+</mat-slider>
+</div>

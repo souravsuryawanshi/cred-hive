@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    .mat-datepicker-content .mat-calendar
+    { 
+        width : 240px;
+    }
+    .mat-datepicker-actions{
+        button{
+            background-color : white;
+            margin : 2%;
+            border-radius: 5px;
+        }
+    }
+}

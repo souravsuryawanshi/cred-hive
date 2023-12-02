@@ -1,0 +1,26 @@
+<div class="header">
+ <h2>CredHive </h2>
+
+ <div class="user">
+ <h3>Welcome, {{userName}}</h3>
+ <button (click)="onLogout()">logout</button>
+</div>
+</div>
+
+<div class="filters">
+    <app-select (value)="onAccountSelect($event)"></app-select>
+    <app-date-range (dateRange)="onDateRangeSelect($event)"></app-date-range>
+    <app-range (rangeSelector)="onLoanRangeSelect($event)"></app-range>
+    <button (click)="onApplyFilters()" [disabled]="!filterCriteria?.filterAdded">Apply Filters</button>
+    <button (click)="onClear()" [disabled]="!filterCriteria?.filterAdded">Clear All</button>
+</div>
+<div class="card-wrapper">
+<ng-container *ngIf="data && data.length; else nodata">
+<ng-container *ngFor="let item of data;let i=index">
+    <app-card [cardData]="item" [imageIdentifier]="i"></app-card>
+</ng-container>
+</ng-container>
+<ng-template #nodata>
+ No Data Found!
+</ng-template>
+</div>

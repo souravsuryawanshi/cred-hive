@@ -1,0 +1,10 @@
+.select-container{
+    margin : 2%;
+    display: flex;
+    ::ng-deep{
+        mat-form-field{
+            width : 250px;
+            padding: 2% 0 2% 4%;
+        }
+    }
+}

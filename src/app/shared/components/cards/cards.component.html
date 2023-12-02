@@ -1,0 +1,8 @@
+<mat-card>
+    <img mat-card-xl-image  [src]="getImage()"  alt="Photo">
+    <ng-container *ngFor="let key of keys; let i = index">
+        <ng-container *ngIf="i<3">
+        <mat-card-content>{{key}} : {{cardData[key]}} </mat-card-content>
+    </ng-container>
+    </ng-container>   
+</mat-card>

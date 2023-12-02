@@ -1,0 +1,28 @@
+<div class="login-container">
+    <div class="login-display">
+        <img src="https://source.unsplash.com/random/200x200?sig=banana"  alt="Photo">
+    </div>
+<div class="login-form">
+    <h4>CredHive</h4>
+<div class="example-container">
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="cred-hive@example.com" [formControl]="email" required>
+      @if (email.invalid) {
+        <mat-error>{{getErrorMessage()}}</mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="******" [formControl]="password" required>
+      @if (password.invalid) {
+        <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <button [disabled]="email.invalid || password.invalid" (click)="onSubmit()">login</button>
+</div>
+</div>
