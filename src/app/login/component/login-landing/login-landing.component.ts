@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { DBEnum, DbService, InterModuleNavigationService } from '../../../core';
+import { AccountService, DBEnum, DbService, InterModuleNavigationService } from '../../../core';
 
 @Component({
     selector : 'app-login',
@@ -12,14 +12,19 @@ export class LoginLandingCompnent implements OnInit{
     email = new FormControl('', [Validators.required, Validators.email]);
     password = new FormControl('', [Validators.required]);
     constructor(private _navigation : InterModuleNavigationService,
-        private _dbService : DbService){
+        private _dbService : DbService,
+        private _userService : AccountService){
 
     }
     ngOnInit(): void {
+        if(this._userService.isLoggedIn()){
+            this._navigation.toDashboard();
+        }
         let user = this._dbService.getData(DBEnum.USERNAME);
         if(user){
             this.email.setValue(user);
         }
+        
     }
      getErrorMessage() {
       if (this.email.hasError('required')) {
