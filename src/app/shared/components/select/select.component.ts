@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { SelectType } from '../../model';
 
 @Component({
@@ -7,13 +7,23 @@ import { SelectType } from '../../model';
     styleUrls : ['./select.component.scss']
 })
 
-export class SelectComponent{
-    selectionValue : SelectType[] = [
-        {value: 'open', viewValue: 'Open'},
-        {value: 'closed', viewValue: 'Closed'},
-      ];
+export class SelectComponent implements OnInit, OnChanges{
+    @Input() isCleared : boolean =  false;
+    selectionValue : SelectType[] = [];
+    optionValue : string = '';
       @Output() value = new EventEmitter();
-      
+      ngOnInit(){
+        this._getValues();
+      }
+      ngOnChanges(){
+       this.optionValue = '';
+      }
+      private _getValues(){
+        this.selectionValue = [
+            {value: 'open', viewValue: 'Open'},
+            {value: 'closed', viewValue: 'Closed'},
+          ];
+      }
       onSelect(event : any){
          this.value.emit(event.value);
       }

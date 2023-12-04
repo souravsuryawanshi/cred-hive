@@ -12,6 +12,16 @@ export class InterModuleNavigationService {
    toDashboard(){
     this._router.navigateByUrl('/dashboard');
    }
+   toCompanyDetails(companyName : string | undefined){
+    this._router.navigate(['/dashboard/company-details'],{
+        queryParams : {
+            id : companyName
+        }
+    })
+   }
+   toCharts(){
+    this._router.navigateByUrl('/dashboard/charts');
+   }
    toLogin(){
     this._router.navigateByUrl('');
    }

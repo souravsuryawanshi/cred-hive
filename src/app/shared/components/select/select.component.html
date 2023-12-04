@@ -1,7 +1,7 @@
   <div class="select-container">
   <mat-form-field>
     <mat-label>Select Account Type</mat-label>
-    <mat-select (selectionChange)="onSelect($event)">
+    <mat-select (selectionChange)="onSelect($event)" [(ngModel)]="optionValue">
       @for (option of selectionValue; track option) {
         <mat-option [value]="option.value">{{option.viewValue}}</mat-option>
       }

@@ -1,7 +1,9 @@
 import {Injectable } from '@angular/core';
-import { DATA } from '../constant/data.constant';
+
 import { of } from 'rxjs';
 import { CompanyData, FilterCriteria } from '../model';
+import { DATA } from '../../../constant';
+//import { DATA } from '../constant/data.constant';
 
 @Injectable()
 

@@ -1,4 +1,4 @@
-import { CompanyData } from "../model";
+import { CompanyData } from "../shared";
 
 
 export const DATA : CompanyData[] = [{

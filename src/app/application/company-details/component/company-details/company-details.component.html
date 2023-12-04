@@ -1,0 +1,13 @@
+<div class="container">
+<mat-card>
+    <img mat-card-xl-image  [src]="getImage()"  alt="Photo">
+    <ng-container *ngIf="keys && keys.length; else nodata">
+      <ng-container *ngFor="let key of keys; let i = index">
+        <mat-card-content>{{key}} : {{cardData[key]}} </mat-card-content>
+       </ng-container>
+    </ng-container>  
+    <ng-template #nodata>
+       No Data Found!
+    </ng-template> 
+</mat-card>
+</div>

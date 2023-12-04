@@ -35,6 +35,7 @@ export class LoginLandingCompnent implements OnInit{
     }
     onSubmit(){
         this._dbService.addData(DBEnum.USERNAME,this.email.value);
+        this._dbService.addData(DBEnum.LOGIN,true);
         this._navigation.toDashboard();
     }
 }

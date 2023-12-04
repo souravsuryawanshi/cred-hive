@@ -13,5 +13,8 @@ export class AccountService{
     saveToken(token : unknown){
       this._dbService.addData(DBEnum.LOGIN,token);
     }
+    isLoggedIn(){
+        return this._dbService.getData(DBEnum.LOGIN) || false
+    }
    
 }

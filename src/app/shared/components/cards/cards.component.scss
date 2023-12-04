@@ -19,3 +19,26 @@ mat-card{
     margin : 10px;
     border : 2px solid rgb(105,105,105);
 }
+
+@media only screen and (max-width: 540px) {
+
+    mat-card{
+        width : 400px;
+    }
+
+}
+@media only screen and (max-width: 430px) {
+
+    mat-card{
+        width : 350px;
+    }
+
+}
+
+@media only screen and (max-width: 350px) {
+
+    mat-card{
+        width : 300px;
+    }
+
+}

@@ -1,23 +1,16 @@
-<div class="header">
- <h2>CredHive </h2>
-
- <div class="user">
- <h3>Welcome, {{userName}}</h3>
- <button (click)="onLogout()">logout</button>
-</div>
-</div>
-
 <div class="filters">
-    <app-select (value)="onAccountSelect($event)"></app-select>
-    <app-date-range (dateRange)="onDateRangeSelect($event)"></app-date-range>
-    <app-range (rangeSelector)="onLoanRangeSelect($event)"></app-range>
+    <app-select [isCleared]="isCleared" (value)="onAccountSelect($event)"></app-select>
+    <app-date-range [isCleared]="isCleared" (dateRange)="onDateRangeSelect($event)"></app-date-range>
+    <app-range [isCleared]="isCleared" (rangeSelector)="onLoanRangeSelect($event)"></app-range>
     <button (click)="onApplyFilters()" [disabled]="!filterCriteria?.filterAdded">Apply Filters</button>
-    <button (click)="onClear()" [disabled]="!filterCriteria?.filterAdded">Clear All</button>
+    <button (click)="onClear()" [disabled]="!filterCriteria.filterAdded">Clear All</button>
 </div>
+
+
 <div class="card-wrapper">
 <ng-container *ngIf="data && data.length; else nodata">
 <ng-container *ngFor="let item of data;let i=index">
-    <app-card [cardData]="item" [imageIdentifier]="i"></app-card>
+    <app-card [cardData]="item" [imageIdentifier]="i" (click)="toCompanyDetail(item.companyName)"></app-card>
 </ng-container>
 </ng-container>
 <ng-template #nodata>

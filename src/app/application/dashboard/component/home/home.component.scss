@@ -1,14 +1,4 @@
-.header{
-    width : 100%;
-    min-height: 40px;
-    background-color: rgb(21,93,233);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 16px;
-    padding: 10px 20px 0 10px;
-}
+
 .filters{
     margin-top: 2%;
     display: flex;
@@ -29,12 +19,23 @@
 .disabled{
     pointer-events: none;
 }
-.user{
-    margin :0 20px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    button{
-        margin: 0 0 10px 10px;
+
+
+@media only screen and (max-width: 540px) {
+    .filters{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 5%;
+        button{
+          margin : 0 5% 2% 5%;
+          width : 200px;
+        }
+    }
+    .card-wrapper{
+       width : 300px;
+    }
+    .disabled{
+
     }
 }

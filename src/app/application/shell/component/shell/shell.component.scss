@@ -1,0 +1,36 @@
+.header{
+    width : 100%;
+    min-height: 40px;
+    background-color: rgb(21,93,233);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 10px 20px 0 10px;
+}
+
+.user{
+    margin :0 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button{
+        margin: 0 0 10px 10px;
+    }
+}
+
+
+@media only screen and (max-width: 550px) {
+
+   .header{
+     display: flex;
+     flex-direction: column;
+   }
+   .user{
+    button{
+
+    }
+   }
+
+}

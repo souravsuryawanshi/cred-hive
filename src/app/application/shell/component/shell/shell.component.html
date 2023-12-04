@@ -1,0 +1,10 @@
+<div class="header">
+  <h2>CredHive</h2>
+  <div class="user">
+    <h3>Welcome, {{ userName }}</h3>
+    <button (click)="toDashboard()">Home</button>
+    <button (click)="toGraph()">Graph</button>
+    <button (click)="onLogout()">logout</button>
+  </div>
+</div>
+<router-outlet></router-outlet>

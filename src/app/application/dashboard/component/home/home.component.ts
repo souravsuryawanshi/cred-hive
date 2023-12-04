@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { BaseComponent, DBEnum, DbService, InterModuleNavigationService } from '../../../../core';
+import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
+import { BaseComponent, InterModuleNavigationService } from '../../../../core';
 import { CompanyData, FilterCriteria } from '../../model';
 import { CompanyDataService } from '../../service';
 import { take } from 'rxjs';
@@ -12,21 +12,20 @@ import { take } from 'rxjs';
 
 export class HomeComponent extends BaseComponent implements OnInit{
     data : CompanyData[] = [];
-    userName : string = 'CredHive User';
     filterCriteria : FilterCriteria = {};
-    constructor(private _dataService : CompanyDataService
-        ,private _dbService : DbService,
-        private _navigation : InterModuleNavigationService){
+    isCleared : boolean =  false;
+    constructor(private _dataService : CompanyDataService,
+        private _navigation : InterModuleNavigationService,
+        private el : ElementRef,
+        private r2 : Renderer2
+        ){
         super();
     }
 
     ngOnInit(): void {
-        this._getUsername();
         this._getData();
     }
-    private _getUsername(){
-        this.userName = this._dbService.getData(DBEnum.USERNAME);
-    }
+    
     private _getData(){
         this._dataService.getData().pipe(take(1)).subscribe((data : CompanyData[])=>{
           this.data = data;
@@ -37,12 +36,14 @@ export class HomeComponent extends BaseComponent implements OnInit{
         });
     }
     onApplyFilters(){
+       this.isCleared = false;
        this.data = this._dataService.filterData(this.filterCriteria);
+    //    if(this.toggle){
+    //     this.toggle = false;
+    //     this.displayFilters();
+    //    }
     }
-    onLogout(){
-     this._dbService.remove(DBEnum.LOGIN);
-     this._navigation.toLogin();
-    }
+    
     onAccountSelect(event : string){
       this.filterCriteria.accountType = event;
       this.filterCriteria.filterAdded = true;
@@ -55,11 +56,28 @@ export class HomeComponent extends BaseComponent implements OnInit{
     onClear(){
         this.filterCriteria.filterAdded = false;
         this._getData();
+        this.isCleared = true;
+        // if(this.toggle){
+        //     this.toggle = false;
+        //     this.displayFilters();
+        //    }
     }
     onLoanRangeSelect(event : any){
         this.filterCriteria.loanLowerLimit = event.startValue;
         this.filterCriteria.loanUpperLimit = event.endValue;
         this.filterCriteria.filterAdded = true;
     }
+    toCompanyDetail(companyName : string | undefined){
+       this._navigation.toCompanyDetails(companyName);
+    }
+    // displayFilters(){
+    //     const filterDiv = this.el.nativeElement.querySelector('.filters');
+    //     if(this.toggle){
+    //      this.r2.setStyle(filterDiv,'display','block');
+    //     }
+    //     else{
+    //         this.r2.setStyle(filterDiv,'display','none');
+    //     }
+    // }
 
 }
