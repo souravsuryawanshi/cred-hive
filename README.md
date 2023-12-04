@@ -1,3 +1,35 @@
+# Steps to run this app : (the app is hosted on this link  -> https://cred-hive-souravsuryawanshi.vercel.app/ )
+
+1. Clone this project on your system using command -> git clone https://github.com/souravsuryawanshi/cred-hive.git
+
+2. Go to the project folder that is created after cloning i.e. cd cred-hive
+
+3. Now when you are inside cred-hive folder run command -> npm i 
+
+4. For running the app -> run command -> npm start 
+
+5. Go to http://localhost:4200/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # CredHive
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
